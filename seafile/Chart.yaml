@@ -1,0 +1,20 @@
+apiVersion: v2
+name: seafile
+description: A Helm chart for deploy seafile
+type: application
+version: 0.1.0
+appVersion: "12.0.9"
+sources:
+- https://github.com/haiwen/seafile
+docs:
+- https://manual.seafile.com/12.0/setup/k8s_single_node/#gettings-started
+- https://manual.seafile.com/12.0/setup/setup_ce_by_docker/#getting-started
+dependencies:
+- condition: mariadb.enabled
+  name: mariadb
+  repository: oci://registry-1.docker.io/bitnamicharts
+  version: 20.2.2
+- condition: memcached.enabled
+  name: memcached
+  repository: oci://registry-1.docker.io/bitnamicharts
+  version: 7.6.3
